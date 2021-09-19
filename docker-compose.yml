@@ -1,0 +1,17 @@
+version: '3'
+services:
+  db:
+    image: postgress:latest
+    volumes:
+      - ./db/data:
+    environment:
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_DATABASE=${DB_DATABASE}
+  api:
+    build: ./api
+    environment:
+      - DB_SERVER=${DB_SERVER}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_DATABASE=${DB_DATABASE}
